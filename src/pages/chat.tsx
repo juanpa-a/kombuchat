@@ -2,17 +2,10 @@ import React, { useEffect, useState } from "react";
 import { ApiService, Message } from "../api/firebase";
 
 
-export const ChatPage = () => {
-  const username = localStorage.getItem("username") as string;
-  const channel = location.pathname
-
-  const randomId = function(length = 8) {
-    return Math.random().toString(36).substring(2, length+2);
-  };
-
-  if(channel === "/") {
-    location.replace(`${location.href}${randomId()}`)
-  }
+export const ChatPage = ({ username, channel }: {
+  username: string,
+  channel: string,
+}) => {
 
   const api = ApiService(channel, username)
   const [messages, setMessages] = useState<Message[]>([]);
@@ -38,8 +31,6 @@ export const ChatPage = () => {
 
   useEffect(() => {
     api.connectToChannel(sync)
-    
-    console.log("channel", channel)
   }, [])
 
   return (

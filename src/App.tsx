@@ -6,15 +6,22 @@ import { ChatPage } from './pages/chat'
 
 function App() {
   const [username, setUsername] = useState(localStorage.getItem("username"))
+  const [channel, setChannel] = useState(localStorage.getItem("username"))
   useEffect(() => {
     if (username)
       localStorage.setItem("username", username)
   }, [username])
   return (
     <div className="App">
-      { username 
-        ? <ChatPage/> 
-        : <WelcomePage setUsername={setUsername}/> 
+      { username && channel 
+        ? <ChatPage
+            username={username}
+            channel={channel}
+          /> 
+        : <WelcomePage 
+          setUsername={setUsername}
+          setChannel={setChannel}
+        /> 
       }
     </div>
   )
