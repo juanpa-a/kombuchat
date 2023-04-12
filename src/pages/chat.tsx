@@ -20,6 +20,7 @@ export const ChatPage = ({ username, channel, goBack }: {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if(inputValue === "") return
     if(editingId) api.editMessage(editingId, inputValue)
     else api.createMessage(inputValue)
     setEditingId(0)
