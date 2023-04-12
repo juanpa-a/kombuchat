@@ -68,7 +68,10 @@ export const ChatPage = ({ username, channel, goBack }: {
                     setEditingId(message.id)
                     setInputValue(message.text)
                   }}>✏️</button>
-                  <button onClick={() => api.deleteMessage(message.id)}>🗑</button>
+                  <button onClick={() => {
+                    api.deleteMessage(message.id)
+                    setEditingId(0)
+                  }}>🗑</button>
                 </div>}
               </div>
             </div>
