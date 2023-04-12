@@ -34,4 +34,14 @@ export const ApiService = (channelId: string, author: string) => ({
       sync(snapshot.val())
     })
   },
+  editMessage: (messageId: number, text: string) => {
+    set(ref(db, `${channelId}/${messageId}`), {
+      id: messageId,
+      author,
+      text
+    })    
+  },
+  deleteMessage: (messageId: number) => {
+    set(ref(db, `${channelId}/${messageId}`), null)
+  },
 })
