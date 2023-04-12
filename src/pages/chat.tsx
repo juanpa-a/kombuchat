@@ -46,13 +46,13 @@ export const ChatPage = ({ username, channel, goBack }: {
   }, [messages]);
 
   return (
-    <div className={`h-screen w-screen overflow-hidden flex flex-col justify-between`}>
+    <div className={"h-screen w-screen overflow-hidden flex flex-col justify-between"}>
       <div className="flex justify-between items-center bg-gray-800 p-4">
-        <button onClick={() => goBack()}>{`< Go back`}</button>
+        <button onClick={() => goBack()}>{"🏡"}</button>
         <h1 className="text-xl font-bold">{channel}</h1>
         <div></div>
       </div>
-      <div className={`bg-gray-800 p-4 flex-1 overflow-y-auto`}>
+      <div className={"bg-gray-800 p-4 flex-1 overflow-y-auto"}>
         {messages.map((message) => (
           <div key={message.id} className={`flex ${message.author === username && "justify-end"}`}>
             <div
