@@ -20,17 +20,17 @@ export const WelcomePage = ({ setUsername, setChannel }: { setUsername: Function
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-4xl font-bold mb-4">Welcome to Kombuchat</h1>
+      <h1 className="text-4xl font-bold mb-4">Welcome to Kombuchat🍻</h1>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <div className="mb-4">
-          <label className="block mb-2 text-center">Username</label>
+          <label className="block mb-2 text-center">username</label>
           <input
             type="text"
             value={name}
             onChange={handleNameChange}
             className="border border-gray-400 rounded py-2 px-4"
           />
-          <label className="block mb-2 text-center">Room</label>
+          <label className="block mb-2 text-center">room</label>
           <input
             type="text"
             value={room}
@@ -39,7 +39,7 @@ export const WelcomePage = ({ setUsername, setChannel }: { setUsername: Function
           />
         </div>
         <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
-          Let's chat
+          join
         </button>
       </form>
     </div>

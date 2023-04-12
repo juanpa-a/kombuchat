@@ -50,11 +50,11 @@ export const ChatPage = ({ username, channel, goBack }: {
           <div key={message.id} className={`flex ${message.author === username && "justify-end"}`}>
             <div
               className={`p-2 my-2 rounded-lg w-72 ${
-                message.author === username ? "bg-blue-500 text-white" : "bg-purple-300 text-black"
+                message.author === username ? "bg-blue-500" : "bg-green-700"
               }`}
             >
               <div className="relative">
-                <p className="text-gray-800 text-xs">{message.author}</p>
+                <p className="text-white text-xs">{message.author}</p>
                 <Markdown>{message.text}</Markdown>
                 {message.author === username && <div className="absolute top-0 right-0 opacity-0 transition-opacity duration-200 hover:opacity-100">
                   <button onClick={() => {
