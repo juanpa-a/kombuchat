@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ApiService, Message } from "../api/firebase";
 
 import Markdown from "marked-react";
@@ -13,6 +13,7 @@ export const ChatPage = ({ username, channel, goBack }: {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [editingId, setEditingId] = useState(0)
+  const chatBottomRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -38,6 +39,11 @@ export const ChatPage = ({ username, channel, goBack }: {
   useEffect(() => {
     api.connectToChannel(sync)
   }, [])
+
+  // Scroll to bottom of chat messages every time a new message is added
+  useEffect(() => {
+    chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className={`h-screen w-screen overflow-hidden flex flex-col justify-between`}>
@@ -68,6 +74,7 @@ export const ChatPage = ({ username, channel, goBack }: {
             </div>
           </div>
         ))}
+        <div ref={chatBottomRef} />
       </div>
 
       <form className={`bg-gray-850 p-4 flex items-center`} onSubmit={handleSubmit}>
